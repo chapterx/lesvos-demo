@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=1000, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Travel Lesvos</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<style>
+
+@font-face {
+    font-family: mainFont;
+    src: url(fonts/DidotHTFL06Light.ttf);
+}
+
+@font-face {
+    font-family: mainFontLight;
+    src: url(fonts/ufonts.com_didot-htf-l64-light.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(fonts/montserrat/Montserrat-Hairline.otf);
+}
+
+@font-face {
+    font-family: textFontReg;
+    src: url(fonts/montserrat/Montserrat-Regular.otf);
+}
+
+@font-face {
+    font-family: textFontBold;
+    src: url(fonts/montserrat/Montserrat-Bold.otf);
+}
+
+@font-face {
+    font-family: voga;
+    src: url(fonts/Voga-Medium-CD/Voga-Medium.otf);
+}
+
+@font-face {
+    font-family: trocchi;
+    src: url(fonts/trocchi/Trocchi.otf);
+}
+
+@font-face {
+    font-family: simplifica;
+    src: url(fonts/SIMPLIFICA/SIMPLIFICATypeface.ttf);
+}
+
+@font-face {
+    font-family: moderne;
+    src: url(fonts/MODERNE_SANS/MODERNESANS.ttf);
+}
+
+@font-face {
+    font-family: futura;
+    src: url(fonts/FuturaMedium/FuturaMedium.otf);
+}
+
+.overlay {
+  background-color:#333;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  z-index: 5;
+  left: 0;
+  top: 0;
+}
+
+.slick-slide {
+  /*background: blue;*/
+}
+.slick-center {
+  /*background: red;*/
+}
+
+.slick-slide > .stylized {
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+
+.slick-center > .overlay {
+  opacity: 0;
+}
+
+.slick-center > .stylized {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    -webkit-filter: brightness(70%);
+    filter: brightness(70%);
+}
+
+:focus {
+    outline: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: none;
+    border: none;
+}
+
+img {
+    /*-webkit-filter: grayscale(100%);*/ /* Safari 6.0 - 9.0 */
+    /*filter: grayscale(100%);*/
+    /*-webkit-filter: blur(3px);*/
+    /*filter: blur(3px);*/
+}
+
+#arrow {
+    -webkit-filter: brightness(200%);
+    filter: brightness(200%);
+}
+
+.mouseoverDetect:hover > img {
+    -webkit-filter: brightness(40%);
+    filter: brightness(40%);
+}
+
+.mouseoverDetect > img {
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+.infoAppear {
+    opacity: 0;
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+.mouseoverDetect:hover > .infoAppear {
+    opacity: 1;
+}
+
+.mouseoverDetect > .infoDisappear > p {
+    font-family: textFontReg;
+    font-weight: 100;
+    font-size: 30px;
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+.mouseoverDetect:hover > .infoDisappear > p {
+    font-family: textFont;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.mouseoverDetect > .infoDisappear > .goAway {
+    opacity: 1;
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+.mouseoverDetect:hover > .infoDisappear > .goAway {
+    opacity: 0;
+}
+
+</style>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #161925; border: none; height: 75px">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="img/lesvosLogo.png" style="width: 53px; position: absolute; top: 10px"/>
+                <a class="navbar-brand" href="index.html" style="position: relative; left: 80px; top: 27px; font-family: mainFont; color: white; font-size: 40px">Lesvos</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="" style="font-family: textFont; font-size: 22px; position: relative; top: 15px; margin-right: 30px">Explore Lesvos</a>
+                    </li>
+                    <li>
+                        <a href="" style="font-family: textFont; font-size: 22px; position: relative; top: 15px; margin-right: 30px">About</a>
+                    </li>
+                    <li>
+                        <a href="" style="font-family: textFont; font-size: 22px; position: relative; top: 15px">Plan a Trip</a>
+                    </li>
+                    <!--<li>
+                        <a href="services.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-item.html">Single Portfolio Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="blog-home-1.html">Blog Home 1</a>
+                            </li>
+                            <li>
+                                <a href="blog-home-2.html">Blog Home 2</a>
+                            </li>
+                            <li>
+                                <a href="blog-post.html">Blog Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="full-width.html">Full Width Page</a>
+                            </li>
+                            <li>
+                                <a href="sidebar.html">Sidebar Page</a>
+                            </li>
+                            <li>
+                                <a href="faq.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="404.html">404</a>
+                            </li>
+                            <li>
+                                <a href="pricing.html">Pricing Table</a>
+                            </li>
+                        </ul>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header Carousel -->
+
+    <div class="slick-carousel">
+        <div class="slider-for" style="height: 425px; width: 100%">
+            <div class="mouseoverDetect" style="height: 425px;">
+                <img src="http://abouthotelier.com/demos/demo13/wp-content/uploads/2013/10/lesvos-1.jpg" style="position: relative; top: -120px; width: 100%"/>
+                <!--<div style="height: 325px; width: 425px; background-color: #61AAC6; position: absolute; top: 65px; left: 100px; opacity: 0.85">
+                </div>-->
+                <div class="infoDisappear" style="height: 25px; width: 100%; position: absolute; top: 27px;">
+                        <p style="position: absolute; left: 0px; color: white; font-family: textFontReg; font-weight: 100; font-size: 30px; text-align: center; margin-left: 12px; margin-right: 12px" class="goAway">
+                            Mouseover for more info
+                        </p>
+                </div>
+                <div class="infoAppear" style="height: 325px; width: 425px; position: absolute; top: 65px; left: 100px">
+                        <p style="position: absolute; top: 10px; left: 10px; font-family: textFont; color: white; font-weight: 900; font-size: 30px; text-align: center; margin-left: 20px; margin-right: 20px">
+                            THE FACE OF GREEK HOSPITALITY
+                        </p>
+                        <p style="position: absolute; top: 120px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            From stunning natural scenery to a rich cultural heritage, Lesvos is home to delightful folk who will treat you as more than just a guest, but as family.
+                        </p>
+                        <p style="position: relative; top: 240px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            It's called the jewel of the Aegean for a reason.
+                        </p>
+                </div>
+            </div>
+
+            <div class="mouseoverDetect" style="height: 425px">
+                <img src="http://static.thousandwonders.net/Lesbos.original.16093.jpg" style="position: relative; top: -180px; width: 100%"/>
+                <div class="infoDisappear" style="height: 25px; width: 100%; position: absolute; bottom: 15px;">
+                        <p style="position: absolute; left: 0px; color: white; font-family: textFontReg; font-weight: 100; font-size: 30px; text-align: center; margin-left: 12px; margin-right: 12px" class="goAway">
+                            Mouseover for more info
+                        </p>
+                </div>
+                <div class="infoAppear" style="height: 325px; width: 425px; position: absolute; top: 65px; left: 100px">
+                        <p style="position: relative; top: 10px; left: 10px; font-family: textFont; color: white; font-weight: 900; font-size: 30px; text-align: center; margin-left: 20px; margin-right: 20px">
+                            10 Days in Paradise
+                        </p>
+                        <p style="position: absolute; top: 70px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            "On the island of Lesbos, the slow and rustic rhythms of Greek life rule. Sheep block traffic as they amble across mountain roads, bells clanking. At a seaside tavern, diners nibble on freshly caught calamari under the generous boughs of an old mulberry tree."
+                        </p>
+                        <a style="position: absolute; top: 240px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            Click here to read about Susan Wright's experience in Lesvos.
+                        </a>
+                </div>
+            </div>
+        
+            <div class="mouseoverDetect" style="height: 425px">
+                <img src="http://en.protothema.gr/wp-content/uploads/2015/02/lesvos3.jpg" style="position: relative; top: -140px; width: 100%"/>
+                <div class="infoDisappear" style="height: 25px; width: 100%; position: absolute; top: 27px;">
+                        <p style="position: absolute; left: 0px; color: white; font-family: textFontReg; font-weight: 100; font-size: 30px; text-align: center; margin-left: 12px; margin-right: 12px" class="goAway">
+                            Mouseover for more info
+                        </p>
+                </div>
+                <div class="infoAppear" style="height: 325px; width: 425px; position: absolute; top: 65px; left: 100px">
+                        <p style="position: relative; top: 10px; left: 0px; font-family: textFont; color: white; font-weight: 900; font-size: 30px; text-align: center; margin-left: 20px; margin-right: 20px">
+                            Must-See Destinations
+                        </p>
+                        <p style="position: relative; top: 30px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            The famous petrified forest? <br>
+                            The Plomari beaches? <br>
+                            The Gera Bay hot springs? <br>
+                        </p>
+                        <a style="position: absolute; top: 180px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            Click here to read about all the things you don't want to miss when you're in Lesvos.
+                        </a>
+                </div>
+            </div>
+
+            <div class="mouseoverDetect" style="height: 425px">
+                <img src="http://www.lesvos-tour.com/wp-content/uploads/2011/05/slide-12.jpg" style="position: relative; top: -35px; width: 100%"/>
+                <div class="infoDisappear" style="height: 25px; width: 100%; position: absolute; bottom: 15px;">
+                        <p style="position: absolute; left: 0px; color: white; font-family: textFontReg; font-weight: 100; font-size: 30px; text-align: center; margin-left: 12px; margin-right: 12px" class="goAway">
+                            Mouseover for more info
+                        </p>
+                </div>
+                <div class="infoAppear" style="height: 325px; width: 455px; position: absolute; top: 40px; left: 100px">
+                        <p style="position: relative; top: 10px; left: 0px; font-family: textFont; color: white; font-weight: 900; font-size: 30px; text-align: center; margin-left: 20px; margin-right: 20px">
+                            A Taste of the Mediterranean
+                        </p>
+                        <p style="position: relative; top: 15px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 0px; margin-right: 0px">
+                            Lesvos food is both simple and sophisticated and the island is known for having some of the best cooking in Greece. Perhaps it is because of the abundance of fish or the fact that Lesvos is blessed with land that brings forth fresh, natural and nutritious plants and livestock. Maybe it is because of the olive-oil that has been called the best in Greece.
+                        </p>
+                        <a style="position: absolute; top: 300px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 0px; margin-right: 0px">
+                            Click here to read about Lesvos cuisines and top restaurants.
+                        </a>
+                </div>
+            </div>
+
+            <div class="mouseoverDetect" style="height: 425px">
+                <img src="http://everymatic.com/v2/wp-content/uploads/2013/12/Lesvos.jpg" style="position: relative; top: -200px; width: 100%"/>
+                <div class="infoDisappear" style="height: 25px; width: 100%; position: absolute; bottom: 15px;">
+                        <p style="position: absolute; left: 0px; color: white; font-family: textFontReg; font-weight: 100; font-size: 30px; text-align: center; margin-left: 12px; margin-right: 12px" class="goAway">
+                            Mouseover for more info
+                        </p>
+                </div>
+                <div class="infoAppear" style="height: 325px; width: 490px; position: absolute; top: 40px; left: 100px">
+                        <p style="position: relative; top: 10px; left: 0px; font-family: textFont; color: white; font-weight: 900; font-size: 30px; text-align: center; margin-left: 20px; margin-right: 20px">
+                            Hope and Humanity: The Refugee Crisis
+                        </p>
+                        <p style="position: relative; top: 15px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 0px; margin-right: 0px">
+                            In 2015, hundreds of thousands of fleeing refugees found themselves on the beaches of Lesvos. In keeping with the Greek principle of xenia, or hospitality, the locals of Lesvos received the recent arrivals with bottomless generosity. “Everybody asks why,” said Lefteris Stylianou, a tavern owner. “It’s normal. It’s our mentality.”
+                        </p>
+                        <a style="position: absolute; top: 280px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 0px; margin-right: 0px">
+                            Click here to read about how Lesvos turned one of the greatest humanitarian crises into a moment of great humanitarian triumph.
+                        </a>
+                </div>
+            </div>
+
+            <div class="mouseoverDetect" style="height: 425px">
+                <img src="https://thedeepblueborder.files.wordpress.com/2015/07/mytilini.jpg" style="position: relative; top: -50px; width: 100%"/>
+                <div class="infoDisappear" style="height: 25px; width: 100%; position: absolute; bottom: 15px;">
+                        <p style="position: absolute; left: 0px; color: white; font-family: textFontReg; font-weight: 100; font-size: 30px; text-align: center; margin-left: 12px; margin-right: 12px" class="goAway">
+                            Mouseover for more info
+                        </p>
+                </div>
+                <div class="infoAppear" style="height: 325px; width: 450px; position: absolute; top: 65px; left: 100px">
+                        <p style="position: relative; top: 10px; left: 0px; font-family: textFont; color: white; font-weight: 900; font-size: 30px; text-align: center; margin-left: 20px; margin-right: 20px">
+                            A Cultural Account of Lesvos
+                        </p>
+                        <p style="position: relative; top: 30px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            Birthplace of Sappho, the pivotal Greek poet. And it was here that Aristotle began his intensive study of zoology, completing a work that would later inspire Darwin to say that Linnaeus and Cuvier were "mere schoolboys to old Aristotle."
+                        </p>
+                        <a style="position: absolute; top: 250px; color: white; font-family: textFont; font-weight: 900; font-size: 18px; text-align: center; margin-left: 12px; margin-right: 12px">
+                            Homer writes about Lesvos in the <i> Odyssey </i>. Click here to read about Lesvos' culture.
+                        </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-nav" style="height:214px; width: 100%; padding: 7px; background-color: #161925">
+            <div style="height:200px; width: 400px; position:relative">
+                <div class="overlay">
+                </div>
+                <div style="position: absolute; left: -300px; top: 0px; height: 200px; width: 275px">
+                    <p style="font-family:textFont; color: white; text-align: center; font-size: 18px; position: relative; top: 13px">It's easy to be curious about charming Lesvos. Let us tell you the full story.</p>
+                    <br>
+                    <p style="font-family:textFont; color: white; text-align: center; font-size: 18px; position: relative; top: -10px">Click on the different sections to learn more.</p>
+                    <img src="http://www.clipartkid.com/images/100/arrow-pic-cliparts-co-qgLe4f-clipart.png" style="width: 190px; height: 40px; position: absolute; top: 150px; right: 45px" id="arrow"/>
+                </div>
+                <img src="http://www.discovergreece.com/~/media/images/destination-header/l/lesvos/header-harbor-rotator.ashx" style="width: 100%" class="stylized" alt="1">
+                <p style="position: absolute; top: 12px; left: 30px; font-family: textFont; color: white; font-size: 25px; margin-right: 15px; font-weight: bold">
+                    We welcome you to the Lesvos Tourist Guide
+                </p>
+            </div>
+
+            <div style="height:200px; width: 400px; position: relative">
+                <div class="overlay">
+                </div>
+                <img src="http://www.lesvos.com/hotel-seahorse001.jpg" style="width: 100%; position: relative; top: -45px" class="stylized" alt="2">
+                <p style="position: absolute; top: 12px; left: 30px; font-family: textFont; color: white; font-size: 25px; margin-right: 15px; font-weight: bold">
+                    10 Days in Paradise
+                </p>
+            </div>
+
+            <div style="height:200px; width: 400px; position: relative">
+                <div class="overlay">
+                </div>
+                <img src="http://www.visitgreece.gr/deployedFiles/StaticFiles/Photos/Generic%20Contents/Nisia/Lesvos_Petra_560.jpg" style="width: 100%" class="stylized" alt="2">
+                <p style="position: absolute; top: 12px; left: 30px; font-family: textFont; color: white; font-size: 25px; margin-right: 15px; font-weight: bold">
+                    Must-See Destinations
+                </p>
+            </div>
+
+            <div style="height:200px; width: 400px; position: relative">
+                <div class="overlay">
+                </div>
+                <img src="http://www.lesvosgreece.gr/sites/default/files/styles/responsive_images_business_style/public/orizontia_3.jpg?itok=bpakMT1l" style="width: 120%; position: relative; top: 0px" class="stylized" alt="2">
+                <p style="position: absolute; top: 12px; left: 30px; font-family: textFont; color: white; font-size: 25px; margin-right: 15px; font-weight: bold">
+                    A Taste of the Mediterranean
+                </p>
+            </div>
+
+            <div style="height:200px; width: 400px; position: relative">
+                <div class="overlay">
+                </div>
+                <img src="http://lesvos.com/nifida-lesvos.jpg" style="width: 100%; position: relative; top: -45px" class="stylized" alt="2">
+                <p style="position: absolute; top: 12px; left: 30px; font-family: textFont; color: white; font-size: 25px; margin-right: 15px; font-weight: bold">
+                    Hope and Humanity: The Refugee Crisis
+                </p>
+            </div>
+
+            <div style="height:200px; width: 400px; position: relative">
+                <div class="overlay">
+                </div>
+                <img src="http://www.lesvos.com/pytharia-monastery.jpg" style="width: 100%; position:relative; top: -40px" class="stylized" alt="3">
+                <p style="position: absolute; top: 12px; left: 30px; font-family: textFont; color: white; font-size: 25px; margin-right: 15px; font-weight: bold">
+                    A Cultural Account of Lesvos
+                </p>
+                <div style="position: absolute; left: 425px; top: 0px; height: 200px; width: 275px">
+                    <p style="font-family:textFont; color: white; text-align: center; font-size: 18px; position: relative; top: 30px">Intrigued?</p>
+                    <br>
+                    <a>
+                        <p style="font-family:textFont; color: white; text-align: center; font-size: 18px; position: relative; top: 30px">Click here to explore more of Lesvos.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header" style="font-family:textFontReg">Lesvos sits at the heart of the Aegean...</h2>
+            </div>
+            <div class="col-md-6" style="font-family: textFontReg; font-weight: 100px">
+                <p>
+                    The island of Lesvos is blessed with Award-winning beaches , traditional villages, more varieties of birds and wildflowers than anywhere in Europe, pine forests, medieval castles, scenic harbors with cafes and inexpensive seafood restaurants, abundant fish, museums including two of the finest art museums in Greece, hotels of every class and category, and some of the warmest, friendliest people in all of Greece.
+                </p>
+                <br>
+                <p>
+                    Lesvos has been a favorite location for artists, writers and romantics. Its natural attractions include a petrified forest, and the unique Hot Springs, health inducing spas that are dotted around Lesvos. Many have been in use for thousands of years for rheumatism, arthritis, gynaecological and dermatological ailments, as well as kidney and gallstones, neurological ailments, bronchitis and sciatica.
+                </p>
+                <br>
+                <p>
+                    Lesvos is the perfect place to visit for people who want to experience the real Greece. For the Greek Island traveler who is worried about not having enough to do, Lesvos is the perfect destination with amazing food, beautiful beaches, pine and hardwood forests, rivers and over a million olive trees. 
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive" src="http://static.panoramio.com/photos/large/4658796.jpg" alt="">
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Section -->
+        <div class="well">
+            <div class="row">
+                <div class="col-md-8">
+                    <p style="font-family: textFont; font-size: 30px">Are you ready to discover the beauty of Lesvos?</p>
+                </div>
+                <div class="col-md-4" style="width: 300px; height: 50px; background-color: #161925; border-radius: 10px">
+                    <a style="font-family: textFontReg; font-size: 20px; position: relative; left: 14px; top: 8px" href="#">Yes, let's explore Lesvos!</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+
+    <script type="text/javascript" src="jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+            $('.slider-nav').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                dots: false,
+                centerMode: true,
+                focusOnSelect: true,
+                variableWidth: true,
+                infinite: false,
+                autoplay: false,
+            });
+        });
+  </script>
+
+</body>
+
+</html>
